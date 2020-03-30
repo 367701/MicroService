@@ -1,0 +1,82 @@
+ <!-- Template to add users to web application. -->
+<html>
+  <head>
+    <title>Twitter Application</title>
+    <style>
+      .list {
+        list-style-type: none;
+        display: inline;
+      }
+      .list li {
+        margin-left: 15px;
+        margin-right: 15px;
+        display: inline;
+        float: left;
+      }
+      .checked {
+        color: orange;
+      }
+
+      .rating {
+        position: absolute;
+        direction: rtl;
+      }
+
+      .rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   color: orange;
+   cursor: pointer;
+}
+    </style>
+
+    <script>
+      function rating(val){
+        document.getElementById("rating").value = val;
+
+        for(var i = 1; i <= 5; i++){
+          if(i <= val){
+            document.getElementById("rating" + i).className = "fa fa-star checked";
+          } else {
+            document.getElementById("rating" + i).className = "fa fa-star";
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Product App Demo</a>
+        </div>
+    </div>
+    <div id="main" class="container">
+      <form data-bind="submit: addRating">
+        <input type="text" class="form-control hidden" id="product_id" name="product_id" value="{{id}}" />
+        <p>You're reviewing the following item: {{name}}</p>
+        <div class="rating">
+          <span class="fa fa-star" id="rating5" onclick="javascript: rating(5)"></span>
+          <span class="fa fa-star" id="rating4" onclick="javascript: rating(4)"></span>
+          <span class="fa fa-star" id="rating3" onclick="javascript: rating(3)"></span>
+          <span class="fa fa-star" id="rating2" onclick="javascript: rating(2)"></span>
+          <span class="fa fa-star" id="rating1" onclick="javascript: rating(1)"></span>
+          <span>:Rating </span>
+        </div>
+        <br />
+        <input type="text" class="form-control hidden" id="rating" />
+        <br />
+        <textarea class="form-control" data-bind="value: comment" placeholder="Any Comment (optional)"></textarea>
+        <br />
+        <button type="submit">Submit Review</button>
+      </form>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script> -->
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='review.js') }}"></script>
+    <script>
+
+    </script>
+  </body>
+</html>
