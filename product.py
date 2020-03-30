@@ -196,6 +196,10 @@ def invalid_request(error):
 def load_product():
     return render_template('products.html')
 
+@app.route('/')
+def load_index():
+    return redirect('/products')
+
 @app.route('/review/<int:id>')
 def load_review(id):
     db = connection.Products_Application.products

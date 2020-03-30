@@ -24,9 +24,9 @@ function Product(data) {
   this.id = ko.observable(data.id);
   this.name = ko.observable(data.name);
   this.category = ko.observable(data.category);
-  this.rrp = ko.observable(data.rrp);
+  this.rrp = ko.observable("£" + data.rrp);
   this.description = ko.observable(data.description);
-  this.weight = ko.observable(data.weight);
+  this.weight = ko.observable(data.weight + "g");
   this.image = ko.observable(data.image);
 
   this.rating = ko.observable(averageRating);
