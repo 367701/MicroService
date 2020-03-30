@@ -59,14 +59,16 @@ def create_mongodatabase():
             "id":1,
             "rating":5,
             "comment":"Good product, taste like a rainbow",
-            "product_id":18
+            "product_id":18,
+            "username":"Michael Dawson"
             })
 
             db_ratings.insert({
             "id":2,
             "rating":4,
             "comment":"Good product, i like the cream",
-            "product_id":17
+            "product_id":17,
+            "username":"Scott Smith"
             })
 
             db_api.insert( {
@@ -138,14 +140,15 @@ def get_ratings():
 @app.route('/api/v1/ratings', methods=['POST'])
 def create_rating():
     print(request.json)
-    if not request.json or not 'product_id' in request.json or not 'rating' in request.json:
+    if not request.json or not 'product_id' in request.json or not 'rating' in request.json or not 'username' in request.json:
         abort(400)
     print(request.json)
     rating = {
         'product_id': int(request.json['product_id']),
         'rating': int(request.json['rating']),
         'comment': request.json.get('comment',""),
-        'id': random.randint(1,1000)
+        'id': random.randint(1,1000),
+        'username': request.json['username']
     }
     return jsonify({'status': add_rating(rating)}), 201
 

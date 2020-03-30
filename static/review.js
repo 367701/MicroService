@@ -3,6 +3,7 @@ function Rating(data){
   this.rating = ko.observable(data.rating);
   this.comment = ko.observable(data.comment);
   this.product_id = ko.observable(data.product_id);
+  this.username = ko.observable(data.username);
 }
 
 function RatingListViewModel() {
@@ -11,12 +12,14 @@ function RatingListViewModel() {
     self.rating = ko.observable();
     self.comment= ko.observable();
     self.product_id= ko.observable();
+    self.username = ko.observable();
 
     self.addRating = function() {
 	self.save();
   self.rating("");
 	self.comment("");
 	self.product_id("");
+  self.username("");
     };
 
     self.save = function() {
@@ -27,7 +30,8 @@ function RatingListViewModel() {
 	    data: JSON.stringify({
 		'rating': document.getElementById("rating").value,
 		'comment': self.comment(),
-    'product_id': document.getElementById("product_id").value
+    'product_id': document.getElementById("product_id").value,
+    'username': self.username()
 	    }),
 	    success: function(data) {
           alert("success");

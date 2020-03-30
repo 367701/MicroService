@@ -53,6 +53,8 @@
       <form data-bind="submit: addRating">
         <input type="text" class="form-control hidden" id="product_id" name="product_id" value="{{id}}" />
         <p>You're reviewing the following item: {{name}}</p>
+        <input type="text" class="form-control" data-bind="value: username" placeholder="Your Name" />
+        <br />
         <div class="rating">
           <span class="fa fa-star" id="rating5" onclick="javascript: rating(5)"></span>
           <span class="fa fa-star" id="rating4" onclick="javascript: rating(4)"></span>
