@@ -213,4 +213,4 @@ def load_review(id):
 # Main Function
 if __name__ == '__main__':
     create_mongodatabase()
-    app.run()
+    app.run(port=80)
